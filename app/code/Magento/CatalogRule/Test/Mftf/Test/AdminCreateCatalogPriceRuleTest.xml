@@ -187,4 +187,29 @@
         <see selector="{{StorefrontCategoryProductSection.ProductInfoByNumber('1')}}" userInput="$$createProduct.name$$" stepKey="seeProduct2"/>
         <see selector="{{StorefrontCategoryProductSection.ProductInfoByNumber('1')}}" userInput="$123.00" stepKey="seeDiscountedPrice2"/>
     </test>
+    <test name="CreateCatalogPriceRuleEntityTest">
+        <annotations>
+            <features value="CatalogRule"/>
+            <stories value="Create inactive catalog price rule"/>
+            <title value="Admin should be able to create a inactive catalog price rule"/>
+            <description value="Admin should be able to create a inactive catalog price rule"/>
+            <group value="catalogRule"/>
+            <group value="mtf_migrated"/>
+        </annotations>
+        <before>
+            <actionGroup ref="LoginActionGroup" stepKey="loginGetFromGeneralFile"/>
+            <actionGroup ref="AdminCreateNewInactiveCatalogPriceRuleActionGroup" stepKey="createNewInactivePriceRule" />
+        </before>
+        <after>
+            <actionGroup ref="deleteEntitySecondaryGrid" stepKey="deletePriceRule">
+                <argument name="name" value="InactiveCatalogRule"/>
+                <argument name="searchInput" value="{{AdminSecondaryGridSection.catalogRuleIdentifierSearch}}"/>
+            </actionGroup>
+            <actionGroup ref="logout" stepKey="logout"/>
+        </after>
+        <actionGroup ref="AdminSearchCatalogRuleInGridActionGroup" stepKey="searchCreatedCatalogRule">
+            <argument name="catalogRuleName" value="InactiveCatalogRule"/>
+        </actionGroup>
+        <actionGroup ref="SeeInactiveCatalogPriceRuleInGridActionGroup" stepKey="SeeInactiveCatalogPriceRuleInGridActionGroup" />
+    </test>
 </tests>
