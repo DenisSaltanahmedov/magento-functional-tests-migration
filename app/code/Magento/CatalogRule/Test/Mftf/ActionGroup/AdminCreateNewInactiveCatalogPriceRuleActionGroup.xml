@@ -20,7 +20,6 @@
         <waitForPageLoad stepKey="waitForPageToLoad"/>
         <fillField stepKey="fillName" selector="{{AdminNewCatalogPriceRule.ruleName}}" userInput="InactiveCatalogRule"/>
         <fillField stepKey="fillDescription" selector="{{AdminNewCatalogPriceRule.description}}" userInput="{{catalogRule.description}}"/>
-        <selectOption selector="{{AdminNewCatalogPriceRule.status}}" userInput="0" stepKey="selectStatus"/>
         <selectOption stepKey="selectWebSite" selector="{{AdminNewCatalogPriceRule.websites}}" userInput="{{catalogRule.website_ids[0]}}"/>
         <selectOption selector="{{AdminNewCatalogPriceRule.customerGroups}}" userInput="General" stepKey="selectCustomerGroup"/>
         <scrollTo selector="{{AdminNewCatalogPriceRule.actionsTab}}" stepKey="scrollToActionTab"/>
@@ -28,6 +27,7 @@
         <selectOption stepKey="discountType" selector="{{AdminNewCatalogPriceRuleActions.apply}}" userInput="by_fixed"/>
         <fillField stepKey="fillDiscountValue" selector="{{AdminNewCatalogPriceRuleActions.discountAmount}}" userInput="10"/>
         <selectOption stepKey="discardSubsequentRules" selector="{{AdminNewCatalogPriceRuleActions.disregardRules}}" userInput="Yes"/>
+        <wait time="5" stepKey="waitForPageLoad2"/>
         <scrollToTopOfPage stepKey="scrollToTop"/>
         <click selector="{{AdminNewCatalogPriceRule.save}}" stepKey="saveTheCatalogRule"/>
         <see selector="{{AdminCategoryMessagesSection.SuccessMessage}}" userInput="You saved the rule." stepKey="assertSuccess"/>
